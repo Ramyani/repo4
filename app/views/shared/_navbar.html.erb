@@ -3,6 +3,15 @@
     <a class="navbar-brand" href="/">SharePlace</a>
 
     <% if user_signed_in? %>
+      <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+        <li class="nav-item active">
+          <%= link_to 'Home', root_path, class: 'nav-link' %>
+        </li>
+        <li class="nav-item">
+          <%= link_to 'Users', users_path, class: 'nav-link' %>
+        </li>
+      </ul>
+
       <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
     <% end %>
   </div>

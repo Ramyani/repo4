@@ -4,5 +4,12 @@
   <% end %>
   <div id='shared_location_<%= location.id %>' class='map-container' data-latitude="<%= location.latitude %>" data-longitude="<%= location.longitude %>" data-behavior='displayMap'>
   </div>
-  <p class='location-date'><%= location.created_at.strftime('%B %-d, %Y') %></p>
+
+  <div>
+    <p class='location-date float-left'><%= location.created_at.strftime('%B %-d, %Y') %></p>
+
+    <% if local_assigns[:show_settings] %>
+      <p class='map-setting-icon <%= location.is_public? ? 'icon-public' : 'icon-users' %> float-right' title="<%= location_setting(location) %>"></p>
+    <% end %>
+  </div>
 </li>

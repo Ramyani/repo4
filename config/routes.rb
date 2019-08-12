@@ -6,11 +6,11 @@ Rails.application.routes.draw do
     end
 
     authenticated :user do
-      root to: "home#index"
+      root to: "home#index", as: :root
     end
   end
 
-  resources :users, only: [:show] do
+  resources :users, only: [:index, :show] do
     member do
       post :share_location
     end

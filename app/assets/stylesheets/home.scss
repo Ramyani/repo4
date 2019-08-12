@@ -64,5 +64,23 @@
     input[type="checkbox"] {
       margin-left: 1em;
     }
+
+    .share-button {
+      margin-top: 1em;
+    }
+  }
+}
+
+.map-setting-icon {
+  width: 1.3em;
+  height: 1.3em;
+  display: inline-block;
+
+  &.icon-users {
+    background: transparent url(icon_users.png) repeat-y scroll center center;
+  }
+
+  &.icon-public {
+    background: transparent url(icon_public.png) repeat-y scroll center center;
   }
 }

@@ -11,14 +11,16 @@ var sharePlace = {
   behaviors: {}
 };
 
-$(function() {
+$(document).on('turbolinks:load', function() {
   sharePlace.applyBehaviors($('body'));
 
   $('a[data-toggle="pill"]').on('shown.bs.tab', function (e) {
-    var elementId = $(e.target).attr('href');
-    sharePlace.applyBehaviors($(elementId));
+    if($(this).attr('href') != '#v-pills-share-location') {
+      var elementId = $(e.target).attr('href');
+      sharePlace.applyBehaviors($(elementId));
+    }
   });
-});
+})
 
 sharePlace.behaviors.displayMap = function() {
   var $this = $(this);

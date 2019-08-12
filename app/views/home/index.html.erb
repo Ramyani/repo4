@@ -3,17 +3,21 @@
     <div class='row home-tabs'>
       <div class='col-3 tablist-container'>
         <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-          <a class="nav-link active" data-toggle="pill" href="#v-pills-my-locations" role="tab">My Locations</a>
+          <a class="nav-link active" data-toggle="pill" href="#v-pills-share-location" role="tab">Location sharing</a>
+          <a class="nav-link" data-toggle="pill" href="#v-pills-my-locations" role="tab">My Locations</a>
           <a class="nav-link" data-toggle="pill" href="#v-pills-shared-locations" role="tab">Shared with me</a>
-          <a class="nav-link" data-toggle="pill" href="#v-pills-share-location" role="tab">Location sharing</a>
         </div>
       </div>
       <div class='col-9'>
         <div class="tab-content" id="v-pills-tabContent">
-          <div class="tab-pane active" id="v-pills-my-locations" role="tabpanel" >
+          <div class="tab-pane active" id="v-pills-share-location" role="tabpanel">
+            <div id='my_current_location' data-behavior='displayCurrentLocation'></div>
+            <button type="button" class="btn btn-primary float-right" data-toggle="modal" data-target="#location_settings">Share</button>
+          </div>
+          <div class="tab-pane" id="v-pills-my-locations" role="tabpanel" >
             <ul class='my-locations'>
               <% @my_locations.each do |location| %>
-                <%= render 'shared/location', location: location %>
+                <%= render 'shared/location', location: location, show_settings: true %>
               <% end %>
             </ul>
           </div>
@@ -23,10 +27,6 @@
                 <%= render 'shared/location', location: location, show_user: true %>
               <% end %>
             </ul>
-          </div>
-          <div class="tab-pane" id="v-pills-share-location" role="tabpanel">
-            <div id='my_current_location' data-behavior='displayCurrentLocation'></div>
-            <button type="button" class="btn btn-primary float-right" data-toggle="modal" data-target="#location_settings">Share</button>
           </div>
         </div>
       </div>
@@ -47,7 +47,12 @@
             </label>
           </div>
 
-          <%= submit_tag 'Share', class: "btn btn-primary float-right" %>
+          <div class="form-label-group">
+            <%= label_tag :emails, 'Share with' %><br />
+            <%= text_area_tag :emails, nil, rows: 3, placeholder: 'user1@example.com, user2@example.com', class: "form-control" %>
+          </div>
+
+          <%= submit_tag 'Share', class: "btn btn-primary float-right share-button" %>
         <% end %>
       </div>
     </div>
