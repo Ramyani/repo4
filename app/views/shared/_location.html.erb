@@ -1,0 +1,8 @@
+<li>
+  <% if local_assigns[:show_user] %>
+    <p class='user-name text-right'>~<%= link_to_user(location.user) %></p>
+  <% end %>
+  <div id='shared_location_<%= location.id %>' class='map-container' data-latitude="<%= location.latitude %>" data-longitude="<%= location.longitude %>" data-behavior='displayMap'>
+  </div>
+  <p class='location-date'><%= location.created_at.strftime('%B %-d, %Y') %></p>
+</li>

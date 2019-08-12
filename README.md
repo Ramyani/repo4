@@ -22,3 +22,13 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+
+
+create .env file and add  DATABASE_PASSWORD=admin
+
+psql >
+create role share_place SUPERUSER;
+alter role share_place with LOGIN;
+alter role share_place with encrypted password "admin";
+
+rake db:create

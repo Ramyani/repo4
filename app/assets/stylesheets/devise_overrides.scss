@@ -1,5 +1,4 @@
 body.devise {
-  background: #007bff;
   background: linear-gradient(to right, #0062E6, #33AEFF);
 
   .card-signin {
@@ -38,5 +37,9 @@ body.devise {
 
   .form-control {
     line-height: 1.5em;
+  }
+
+  .actions {
+    margin-top: 1.5em;
   }
 }

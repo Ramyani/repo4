@@ -1,0 +1,12 @@
+<div class='container'>
+  <h2><%= @user.full_name %></h2>
+  <div class='row'>
+    <div class='col-12'>
+      <ul class='my-locations'>
+        <% @public_locations.each do |location| %>
+          <%= render 'shared/location', location: location %>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</div>

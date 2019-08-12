@@ -1,1 +1,55 @@
-Hello World!!!
+<div class='container'>
+  <% if user_signed_in? %>
+    <div class='row home-tabs'>
+      <div class='col-3 tablist-container'>
+        <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+          <a class="nav-link active" data-toggle="pill" href="#v-pills-my-locations" role="tab">My Locations</a>
+          <a class="nav-link" data-toggle="pill" href="#v-pills-shared-locations" role="tab">Shared with me</a>
+          <a class="nav-link" data-toggle="pill" href="#v-pills-share-location" role="tab">Location sharing</a>
+        </div>
+      </div>
+      <div class='col-9'>
+        <div class="tab-content" id="v-pills-tabContent">
+          <div class="tab-pane active" id="v-pills-my-locations" role="tabpanel" >
+            <ul class='my-locations'>
+              <% @my_locations.each do |location| %>
+                <%= render 'shared/location', location: location %>
+              <% end %>
+            </ul>
+          </div>
+          <div class="tab-pane" id="v-pills-shared-locations" role="tabpanel">
+            <ul class='shared-locations'>
+              <% @shared_locations.each do |location| %>
+                <%= render 'shared/location', location: location, show_user: true %>
+              <% end %>
+            </ul>
+          </div>
+          <div class="tab-pane" id="v-pills-share-location" role="tabpanel">
+            <div id='my_current_location' data-behavior='displayCurrentLocation'></div>
+            <button type="button" class="btn btn-primary float-right" data-toggle="modal" data-target="#location_settings">Share</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+<div id="location_settings" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class='container'>
+        <%= form_tag share_location_user_path(current_user), method: :post do %>
+          <%= hidden_field_tag :longitude %>
+          <%= hidden_field_tag :latitude %>
+          <div class="checkbox">
+            <label>Share as Public
+              <%= check_box_tag :is_public %>
+            </label>
+          </div>
+
+          <%= submit_tag 'Share', class: "btn btn-primary float-right" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

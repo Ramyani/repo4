@@ -1,0 +1,68 @@
+.alert {
+  margin-bottom: 0 !important;
+  &.alert-success {
+    background-color: #fff;
+    border: none;
+  }
+}
+
+.navbar {
+  background: linear-gradient(to right, #0062E6, #33AEFF);
+
+  a, a:hover {
+    color: #fff;
+  }
+}
+
+.home-tabs {
+  margin-top: 2em;
+
+  .tablist-container {
+    .nav-pills .nav-link {
+      border-radius: 0 2em 2em 0;
+
+      &.active {
+        background-color: #33AEFF;
+      }
+    }
+  }
+}
+
+.my-locations, .shared-locations {
+  li {
+    list-style: none;
+    display: inline-block;
+    float: left;
+    margin: 0.5em;
+
+    div.map-container {
+      height: 10em;
+      width: 10em;
+      display: inline-block;
+    }
+
+    p.user-name {
+      margin-bottom: 0;
+      font-size: 14px;
+      color: #666;
+    }
+
+    p.location-date {
+      font-size: 12px;
+    }
+  }
+}
+
+#my_current_location {
+  margin-bottom: 1em;
+}
+
+#location_settings {
+  .container {
+    padding: 1em;
+
+    input[type="checkbox"] {
+      margin-left: 1em;
+    }
+  }
+}
