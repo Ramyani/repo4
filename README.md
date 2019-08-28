@@ -5,30 +5,29 @@ application up and running.
 
 Things you may want to cover:
 
-* Ruby version
+* Ruby version '2.4.6'
 
-* System dependencies
-
-* Configuration
+* Rails version '5.2.3'
 
 * Database creation
 
+    create .env file and add  DATABASE_PASSWORD=admin
+
+    psql >
+    create role share_place SUPERUSER;
+    
+    alter role share_place with LOGIN;
+    
+    alter role share_place with encrypted password "admin";
+
+    rake db:create
+    
+    rake db:migrate
+
 * Database initialization
 
-* How to run the test suite
+  rake db:seed
 
-* Services (job queues, cache servers, search engines, etc.)
+* Login with 
 
-* Deployment instructions
-
-* ...
-
-
-create .env file and add  DATABASE_PASSWORD=admin
-
-psql >
-create role share_place SUPERUSER;
-alter role share_place with LOGIN;
-alter role share_place with encrypted password "admin";
-
-rake db:create
+  username: ramyani77@gmail.com, password: TestApp123
